@@ -36,6 +36,7 @@ const Form = ({ getData, bookId, setBookId, setResponse }) => {
       setErrors(res);
     } else {
       setResponse(res);
+      setBook({ name: '', author: '', year: '', rating: 0, ISBN: '' });
       setErrors([]);
       getData();
     }
@@ -89,7 +90,7 @@ const Form = ({ getData, bookId, setBookId, setResponse }) => {
         labelName='Автор'
         value={book.author}
         inputId='author'
-        placeholder='Введите авторов через запятую'
+        placeholder='Введите авторов через запятую без пробелов'
         error={errors.author}
         handleChange={handleChange}
       />
