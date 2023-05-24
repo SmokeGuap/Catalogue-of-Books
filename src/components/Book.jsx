@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 const Book = ({ handleDelete, handleUpdate, typeSort, type, items }) => {
   return (
@@ -11,34 +12,34 @@ const Book = ({ handleDelete, handleUpdate, typeSort, type, items }) => {
         {items.map((item, index) => (
           <div
             key={index}
-            className='flex flex-col justify-between p-2 shadow-xl rounded-2xl w-1/6'
+            className='flex flex-col justify-between p-2 shadow-2xl rounded-2xl w-1/6'
           >
             <ul>
               <div className='flex justify-between'>
-                <li className='text-xl font-bold w-5/6'>{item.name}</li>
+                <li className='text-lg font-bold w-5/6 leading-6'>
+                  {item.name}
+                </li>
                 <span className='inline-flex items-center justify-center h-10 w-10 bg-yellow rounded-full font-bold'>
-                  <li>{item.rating}</li>
+                  <li className='text-xl'>{item.rating}</li>
                 </span>
               </div>
-              <li className=''>{item.author.join(', ')}</li>
-              <li className=''>
-                {item.year ? item.year : 'Книга без указания года'}
-              </li>
-              <li className=''>{item.ISBN ? item.ISBN : 'ISBN не указан'}</li>
+              <li className='font-semibold'>{item.author.join(', ')}</li>
             </ul>
-            <div className='flex justify-between flex-col gap-3 mt-5'>
-              <button
-                className='bg-dark-brown hover:bg-brown text-white font-bold py-2 px-4 rounded'
-                onClick={() => handleUpdate(item.id)}
-              >
-                Обновить
-              </button>
-              <button
-                className='bg-dark-brown hover:bg-brown text-white font-bold py-2 px-4 rounded'
-                onClick={() => handleDelete(item.id)}
-              >
-                Удалить
-              </button>
+            <div className='flex flex-col gap-3 mt-10'>
+              <span className=''>
+                <div class='uppercase text-sm text-brown font-bold'>
+                  Год издания
+                </div>
+                {item.year ? item.year : 'Год не указан'}
+              </span>
+              <span className=''>
+                <div class='uppercase text-sm text-brown font-bold'>ISBN</div>
+                {item.ISBN ? item.ISBN : 'ISBN не указан'}
+              </span>
+              <a href='#header'>
+                <Button func={handleUpdate} data={item.id} text='Обновить' />
+              </a>
+              <Button func={handleDelete} data={item.id} text='Удалить' />
             </div>
           </div>
         ))}

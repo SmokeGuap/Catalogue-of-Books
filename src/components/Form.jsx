@@ -80,7 +80,7 @@ const Form = ({ getData, bookId, setBookId }) => {
         e.preventDefault();
         bookId ? handleUpdate(bookId, book) : handleAdd(book);
       }}
-      className='w-2/6 shadow-xl rounded px-8 pt-6 pb-8 mb-4'
+      className='w-2/6 h-max shadow-xl rounded px-8 pt-6 pb-8 mb-4'
     >
       <div className='mb-4'>
         <label className='block text-sm font-bold mb-2' htmlFor='name'>
@@ -95,7 +95,9 @@ const Form = ({ getData, bookId, setBookId }) => {
           onChange={handleChange}
           className='border rounded w-full py-2 px-3 focus:outline-none'
         />
-        <span className='text-sm text-red-600'>{errors?.name}</span>
+        <span className='text-sm font-semibold text-red-600'>
+          {errors?.name}
+        </span>
       </div>
       <div className='mb-4'>
         <label className='block text-sm font-bold mb-2' htmlFor='author'>
@@ -109,7 +111,9 @@ const Form = ({ getData, bookId, setBookId }) => {
           onChange={handleChange}
           className='border rounded w-full py-2 px-3 focus:outline-none'
         />
-        <span className='text-sm text-red-600'>{errors?.author}</span>
+        <span className='text-sm font-semibold text-red-600'>
+          {errors?.author}
+        </span>
       </div>
       <div className='mb-4'>
         <label className='block text-sm font-bold mb-2' htmlFor='year'>
@@ -125,7 +129,9 @@ const Form = ({ getData, bookId, setBookId }) => {
           onChange={handleChange}
           className='border rounded w-full py-2 px-3 focus:outline-none'
         />
-        <span className='text-sm text-red-600'>{errors?.year}</span>
+        <span className='text-sm font-semibold text-red-600'>
+          {errors?.year}
+        </span>
       </div>
       <div className='mb-4'>
         <label className='block text-sm font-bold mb-2' htmlFor='rating'>
@@ -140,7 +146,9 @@ const Form = ({ getData, bookId, setBookId }) => {
           onChange={handleChange}
           className='border rounded w-full py-2 px-3 focus:outline-none'
         />
-        <span className='text-sm text-red-600'>{errors?.rating}</span>
+        <span className='text-sm font-semibold text-red-600'>
+          {errors?.rating}
+        </span>
       </div>
       <div className='mb-4'>
         <label className='block text-sm font-bold mb-2' htmlFor='ISBN'>
@@ -154,7 +162,9 @@ const Form = ({ getData, bookId, setBookId }) => {
           onChange={handleChange}
           className='border rounded w-full py-2 px-3 focus:outline-none'
         />
-        <span className='text-sm text-red-600'>{errors?.ISBN}</span>
+        <span className='text-sm font-semibold text-red-600'>
+          {errors?.ISBN}
+        </span>
       </div>
       {bookId ? (
         <button
@@ -171,9 +181,6 @@ const Form = ({ getData, bookId, setBookId }) => {
           Создать
         </button>
       )}
-      {/* {errors.map((item, i) => (
-        <div key={i}>{item}</div>
-      ))} */}
     </form>
   );
 };
