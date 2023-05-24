@@ -12,7 +12,7 @@ const BooksByType = ({ handleDelete, handleUpdate, typeSort, type, items }) => {
       <div className='flex flex-wrap gap-3'>
         {items.map((item, index) => (
           <Book
-            index={index}
+            key={index}
             item={item}
             handleDelete={handleDelete}
             handleUpdate={handleUpdate}

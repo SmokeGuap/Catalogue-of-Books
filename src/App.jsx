@@ -28,9 +28,9 @@ const App = () => {
   return (
     <div className='bg-gradient-to-b from-amber-100 via-orange-200 to-orange-300 text-dark-brown'>
       <Header />
-      <Navigation />      
-      <main className='container mx-auto'>
-        <section className='flex justify-between'>
+      <Navigation />
+      <main className='container mx-auto px-5'>
+        <section className='flex flex-col md:flex-row justify-between'>
           <Form
             getData={getData}
             bookId={bookId}

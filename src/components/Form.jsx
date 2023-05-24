@@ -74,7 +74,7 @@ const Form = ({ getData, bookId, setBookId, setResponse }) => {
         e.preventDefault();
         bookId ? handleUpdate(bookId, book) : handleAdd(book);
       }}
-      className='w-2/6 h-max shadow-xl rounded px-8 pt-6 pb-8 mb-4'
+      className='md:w-2/6 h-max shadow-xl rounded px-8 pt-6 pb-8 mb-4'
     >
       <Input
         labelName='Название книги'

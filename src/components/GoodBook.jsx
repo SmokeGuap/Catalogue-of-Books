@@ -3,7 +3,7 @@ import Book from './Book';
 
 const GoodBook = ({ goodBook }) => {
   return (
-    <div className='w-2/6'>
+    <div className='md:w-2/6 '>
       <h2 className='font-bold text-4xl mb-5'>Рекомендуемая книга:</h2>
       <div className='flex flex-col bg-emerald-300 justify-between p-2 shadow-2xl rounded-2xl'>
         <ul>

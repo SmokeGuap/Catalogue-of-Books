@@ -1,11 +1,8 @@
 import Button from './Button';
 
-const Book = ({ index, item, handleDelete, handleUpdate }) => {
+const Book = ({ item, handleDelete, handleUpdate }) => {
   return (
-    <div
-      key={index}
-      className='flex flex-col justify-between p-2 shadow-2xl rounded-2xl w-1/5'
-    >
+    <div className='flex flex-col justify-between p-2 shadow-2xl rounded-2xl w-full md:w-1/3 xl:w-1/5'>
       <ul>
         <div className='flex justify-between'>
           <li className='text-lg font-bold w-5/6 leading-6'>{item.name}</li>
