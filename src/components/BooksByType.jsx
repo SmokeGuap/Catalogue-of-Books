@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from './Button';
 import Book from './Book';
 
 const BooksByType = ({ handleDelete, handleUpdate, typeSort, type, items }) => {

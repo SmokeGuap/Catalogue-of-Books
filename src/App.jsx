@@ -8,6 +8,7 @@ import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
 import Response from '../src/components/Response';
 import Navigation from './components/Navigation';
+import Loading from './components/Loading';
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -29,7 +30,7 @@ const App = () => {
     <div className='bg-gradient-to-b from-amber-100 via-orange-200 to-orange-300 text-dark-brown'>
       <Header />
       <Navigation />
-      <main className='container mx-auto px-5'>
+      <main className='container mx-auto px-5 '>
         <section className='flex flex-col md:flex-row justify-between'>
           <Form
             getData={getData}
@@ -37,8 +38,12 @@ const App = () => {
             setBookId={setBookId}
             setResponse={setResponse}
           />
-          {goodBook && Object.entries(goodBook).length > 0 && (
+          {goodBook && Object.entries(goodBook).length > 0 ? (
             <GoodBook goodBook={goodBook} />
+          ) : (
+            <div className='w-2/6'>
+              <Loading />
+            </div>
           )}
         </section>
         <Books

@@ -4,6 +4,7 @@ import { sortFunc } from '../utils/sortFunc';
 import BooksByType from './BooksByType';
 import TypeSortButtons from './TypeSortButtons';
 import { animateScroll as scroll } from 'react-scroll';
+import Loading from './Loading';
 
 const Books = ({ books, getData, setBookId, setResponse }) => {
   const [typeSort, setTypeSort] = useState('year');
@@ -18,8 +19,9 @@ const Books = ({ books, getData, setBookId, setResponse }) => {
   };
 
   return (
-    <div className='mt-10'>
+    <div>
       <TypeSortButtons setTypeSort={setTypeSort} />
+      {!books.length && <Loading />}
       {sortFunc(typeSort, books).map(([type, items]) => (
         <BooksByType
           key={type}
