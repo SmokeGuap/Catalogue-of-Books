@@ -8,11 +8,16 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import { db } from './firebase.js';
+import { validation } from './utils/validation.js';
 
 const booksCollectionRef = collection(db, 'books');
 
 const addBook = async (book) => {
   try {
+    const errors = validation(book);
+    if (Object.keys(errors).length != 0) {
+      return errors;
+    }
     await addDoc(booksCollectionRef, {
       ...book,
       author: book.author.split(','),
@@ -41,6 +46,10 @@ const getBook = async (id) => {
 };
 const updateBook = async (id, book) => {
   try {
+    const errors = validation(book);
+    if (Object.keys(errors).length != 0) {
+      return errors;
+    }
     const bookDoc = doc(db, 'books', id);
     await updateDoc(
       bookDoc,
