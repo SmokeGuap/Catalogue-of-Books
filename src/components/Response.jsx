@@ -9,10 +9,9 @@ const Response = ({ response, setResponse }) => {
             </h3>
             <button
               className={
-                (response.startsWith('Не')
-                  ? 'bg-red-500 hover:bg-emerald-600'
-                  : 'bg-emerald-500 hover:bg-emerald-600',
-                ' m-4 bg-emerald-500 text-white hover:bg-emerald-600 font-bold text-sm py-2 px-4 rounded')
+                response.startsWith('Не')
+                  ? 'bg-red-500 hover:bg-red-600 active:bg-red-700 m-4 text-white font-bold text-sm py-2 px-4 rounded'
+                  : 'bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 m-4 text-white font-bold text-sm py-2 px-4 rounded'
               }
               onClick={() => setResponse('')}
             >
