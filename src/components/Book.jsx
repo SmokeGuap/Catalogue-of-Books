@@ -8,7 +8,7 @@ const Book = ({ handleDelete, handleUpdate, typeSort, type, items }) => {
         {type == '0' && typeSort == 'year' ? 'Книги без указания года' : type}
       </h3>
       <hr className='w-48 h-1 mx-auto mt-4 mb-10 bg-dark-brown border-0 rounded' />
-      <div className='flex gap-x-3'>
+      <div className='flex flex-wrap gap-3'>
         {items.map((item, index) => (
           <div
             key={index}
@@ -27,13 +27,15 @@ const Book = ({ handleDelete, handleUpdate, typeSort, type, items }) => {
             </ul>
             <div className='flex flex-col gap-3 mt-10'>
               <span className=''>
-                <div class='uppercase text-sm text-brown font-bold'>
+                <div className='uppercase text-sm text-brown font-bold'>
                   Год издания
                 </div>
                 {item.year ? item.year : 'Год не указан'}
               </span>
               <span className=''>
-                <div class='uppercase text-sm text-brown font-bold'>ISBN</div>
+                <div className='uppercase text-sm text-brown font-bold'>
+                  ISBN
+                </div>
                 {item.ISBN ? item.ISBN : 'ISBN не указан'}
               </span>
               <a href='#header'>

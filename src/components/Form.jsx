@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { addBook, getBook, updateBook } from './CRUD';
+import { addBook, getBook, updateBook } from '../firebase/CRUD';
+import Input from './Input';
 
 const currentYear = new Date().getFullYear();
 
-const Form = ({ getData, bookId, setBookId }) => {
+const Form = ({ getData, bookId, setBookId, setResponse }) => {
   const [errors, setErrors] = useState([]);
-  const [response, setResponse] = useState('');
   const [book, setBook] = useState({
     name: '',
     author: '',
@@ -20,21 +20,15 @@ const Form = ({ getData, bookId, setBookId }) => {
     const {
       target: { id },
     } = event;
-    if (id == 'name') {
-      setBook({ ...book, name: value });
-    }
-    if (id == 'author') {
-      setBook({ ...book, author: value });
-    }
-    if (id == 'year') {
-      setBook({ ...book, year: +value });
-    }
-    if (id == 'rating') {
-      setBook({ ...book, rating: +value });
-    }
-    if (id == 'ISBN') {
-      setBook({ ...book, ISBN: value });
-    }
+    id == 'name'
+      ? setBook({ ...book, name: value })
+      : id == 'author'
+      ? setBook({ ...book, author: value })
+      : id == 'year'
+      ? setBook({ ...book, year: +value })
+      : id == 'rating'
+      ? setBook({ ...book, rating: +value })
+      : setBook({ ...book, ISBN: value });
   };
   const handleAdd = async (book) => {
     const res = await addBook(book);
@@ -82,90 +76,52 @@ const Form = ({ getData, bookId, setBookId }) => {
       }}
       className='w-2/6 h-max shadow-xl rounded px-8 pt-6 pb-8 mb-4'
     >
-      <div className='mb-4'>
-        <label className='block text-sm font-bold mb-2' htmlFor='name'>
-          Название книги
-        </label>
-        <input
-          value={book.name}
-          id='name'
-          type='text'
-          placeholder='Название'
-          maxLength={100}
-          onChange={handleChange}
-          className='border rounded w-full py-2 px-3 focus:outline-none'
-        />
-        <span className='text-sm font-semibold text-red-600'>
-          {errors?.name}
-        </span>
-      </div>
-      <div className='mb-4'>
-        <label className='block text-sm font-bold mb-2' htmlFor='author'>
-          Автор
-        </label>
-        <input
-          value={book.author}
-          id='author'
-          type='text'
-          placeholder='Введите авторов через запятую'
-          onChange={handleChange}
-          className='border rounded w-full py-2 px-3 focus:outline-none'
-        />
-        <span className='text-sm font-semibold text-red-600'>
-          {errors?.author}
-        </span>
-      </div>
-      <div className='mb-4'>
-        <label className='block text-sm font-bold mb-2' htmlFor='year'>
-          Год издания
-        </label>
-        <input
-          value={book.year}
-          id='year'
-          type='number'
-          min={1800}
-          max={currentYear}
-          placeholder='Год'
-          onChange={handleChange}
-          className='border rounded w-full py-2 px-3 focus:outline-none'
-        />
-        <span className='text-sm font-semibold text-red-600'>
-          {errors?.year}
-        </span>
-      </div>
-      <div className='mb-4'>
-        <label className='block text-sm font-bold mb-2' htmlFor='rating'>
-          Рейтинг книги
-        </label>
-        <input
-          value={book.rating}
-          id='rating'
-          type='number'
-          min={0}
-          max={10}
-          onChange={handleChange}
-          className='border rounded w-full py-2 px-3 focus:outline-none'
-        />
-        <span className='text-sm font-semibold text-red-600'>
-          {errors?.rating}
-        </span>
-      </div>
-      <div className='mb-4'>
-        <label className='block text-sm font-bold mb-2' htmlFor='ISBN'>
-          ISBN
-        </label>
-        <input
-          value={book.ISBN}
-          id='ISBN'
-          type='text'
-          placeholder='ISBN'
-          onChange={handleChange}
-          className='border rounded w-full py-2 px-3 focus:outline-none'
-        />
-        <span className='text-sm font-semibold text-red-600'>
-          {errors?.ISBN}
-        </span>
-      </div>
+      <Input
+        labelName='Название книги'
+        value={book.name}
+        inputId='name'
+        type='text'
+        placeholder='Название'
+        error={errors.name}
+        handleChange={handleChange}
+      />
+      <Input
+        labelName='Автор'
+        value={book.author}
+        inputId='author'
+        placeholder='Введите авторов через запятую'
+        error={errors.author}
+        handleChange={handleChange}
+      />
+      <Input
+        labelName='Год издания'
+        value={book.year}
+        inputId='year'
+        placeholder='Год'
+        type='number'
+        min={1800}
+        max={currentYear}
+        error={errors.year}
+        handleChange={handleChange}
+      />
+      <Input
+        labelName='Рейтинг книги'
+        value={book.rating}
+        inputId='rating'
+        type='number'
+        min={0}
+        max={10}
+        error={errors.rating}
+        handleChange={handleChange}
+      />
+      <Input
+        labelName='ISBN'
+        value={book.ISBN}
+        inputId='ISBN'
+        placeholder='ISBN'
+        error={errors.ISBN}
+        handleChange={handleChange}
+      />
       {bookId ? (
         <button
           type='submit'

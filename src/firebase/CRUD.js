@@ -8,7 +8,7 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import { db } from './firebase.js';
-import { validation } from './utils/validation.js';
+import { validation } from '../utils/validation.js';
 
 const booksCollectionRef = collection(db, 'books');
 
