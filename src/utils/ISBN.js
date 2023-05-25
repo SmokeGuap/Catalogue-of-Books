@@ -3,9 +3,9 @@ export const ISBNValidation = (ISBN) => {
     /^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/;
 
   if (regex.test(ISBN)) {
-    const chars = subject.replace(/[- ]|^ISBN(?:-1[03])?:?/g, '').split('');
+    const chars = ISBN.replace(/[- ]|^ISBN(?:-1[03])?:?/g, '').split('');
     const last = chars.pop();
-    const sum = 0;
+    let sum = 0;
     let check, i;
 
     if (chars.length == 9) {

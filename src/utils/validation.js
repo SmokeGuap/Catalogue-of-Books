@@ -17,7 +17,7 @@ export const validation = (book) => {
   if (book.rating < 0 || book.rating > 10) {
     errors = { ...errors, rating: 'Рейтинг  должен быть между 0 и 10!' };
   }
-  if (book.ISBN && !ISBNValidation) {
+  if (book.ISBN && !ISBNValidation(book.ISBN)) {
     errors = { ...errors, ISBN: 'Некорректный ISBN!' };
   }
   return errors;
